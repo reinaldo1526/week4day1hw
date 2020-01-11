@@ -31,14 +31,14 @@ class User(db.Model,UserMixin):
     def __repr__(self):
         return '{} has been created' .format(self.avengername)
 
-    class Post(db.Model):
-        id = db.Column(db.Integer, primary_key = True)
-        tittle = db.Column(db.String(200))
-        content = db.Column(db.String(300))
-        date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-        user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False) 
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(200))
+    content = db.Column(db.String(300))
+    date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False) 
 
-        def __repr__(self):
-            return "The title is {} and the user is {}".format(self.title,self.user_id)
+    def __repr__(self):
+        return "The title is {} and the user is {}".format(self.title,self.user_id)
 
 
